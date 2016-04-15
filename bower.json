@@ -1,0 +1,25 @@
+{
+  "name": "Shi Fan",
+  "homepage": "https://github.com/fanshi118/Big_Data_D3_Lab",
+  "authors": [
+    "Shi Fan <sf2632@nyu.edu>"
+  ],
+  "description": "D3 lab for big data class",
+  "main": "index.html",
+  "keywords": [
+    "d3"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jQuery": "^2.2.3",
+    "d3": "^3.5.16"
+  }
+}
