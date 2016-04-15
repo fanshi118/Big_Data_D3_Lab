@@ -1,8 +1,9 @@
 {
-  "name": "Shi Fan",
+  "name": "Shi Fan, Tianyi Gu",
   "homepage": "https://github.com/fanshi118/Big_Data_D3_Lab",
   "authors": [
-    "Shi Fan <sf2632@nyu.edu>"
+    "Shi Fan <sf2632@nyu.edu>",
+    "Tianyi Gu <tg1442@nyu.edu>"
   ],
   "description": "D3 lab for big data class",
   "main": "index.html",
