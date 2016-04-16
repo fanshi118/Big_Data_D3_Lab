@@ -25,10 +25,18 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-// add the tooltip area to the webpage
-var tooltip = d3.select("body").append("div")
-    .attr("class", "tooltip")
-    .style("opacity", 0);
+// highlight
+function highlight(name) {
+    svg.selectAll("circle")
+    .style("stroke", function(d,i) {
+        return d.name==name ? "black":undefined
+    })
+}
+
+// unhighlight
+function unhighlight() {
+    svg.selectAll("circle").style("stroke", undefined)
+}
 
 d3.csv("car.csv", function(error, data) {
     data.forEach(function(d) {
@@ -67,31 +75,25 @@ d3.csv("car.csv", function(error, data) {
   // draw dots
   svg.selectAll(".dot")
       .data(data)
-    .enter().append("circle")
+      .enter().append("circle")
       .attr("class", "dot")
-      .attr("r", 3.5)
+      .attr("r", 2.5)
       .attr("cx", xMap)
       .attr("cy", yMap)
-      .style("fill", function(d) { return color(cValue(d));}) 
+      .style("fill", function(d) { return color(cValue(d));})
       .text(function(d) { return d.name; })
-      .on("mouseover", function(d) {
-          tooltip.transition()
-               .duration(200)
-               .style("opacity", .9);
-          tooltip.html(d.name)
-               .style("left", (d3.event.clientX) + "px")
-               .style("top", (d3.event.clientY) + "px");
+      .on("mouseenter", function(d) {
+          highlight(d.name);
+          d3.select("h4").text(d.name);
       })
-      .on("mouseout", function(d) {
-          tooltip.transition()
-               .duration(500)
-               .style("opacity", 0);
+      .on("mouseleave", function(d) {
+          unhighlight(d.name);
       });
 
   // draw legend
   var legend = svg.selectAll(".legend")
       .data(color.domain())
-    .enter().append("g")
+       .enter().append("g")
       .attr("class", "legend")
       .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
 
