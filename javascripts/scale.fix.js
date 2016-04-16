@@ -42,6 +42,11 @@ d3.csv("car.csv", function(error, data) {
     data.forEach(function(d) {
        d.mpg = +d.mpg;
        d.displacement = +d.displacement;
+       d.cylinders = +d.cylinders;
+       d.horsepower = +d.horsepower;
+       d.weight = +d.weight;
+       d.acceleration = +d.acceleration;
+       d["model.year"] = +d["model.year"];
     });
      
      // don't want dots overlapping axis, so add in buffer to data domain
