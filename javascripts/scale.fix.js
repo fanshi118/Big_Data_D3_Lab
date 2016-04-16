@@ -73,14 +73,14 @@ d3.csv("car.csv", function(error, data) {
       .attr("cx", xMap)
       .attr("cy", yMap)
       .style("fill", function(d) { return color(cValue(d));}) 
+      .text(function(d) { return d.name; })
       .on("mouseover", function(d) {
           tooltip.transition()
                .duration(200)
                .style("opacity", .9);
-          tooltip.html(d.displacement + "<br/> (" + xValue(d) 
-	        + ", " + yValue(d) + ")")
-               .style("left", (d3.event.pageX + 5) + "px")
-               .style("top", (d3.event.pageY - 28) + "px");
+          tooltip.html(d.name)
+               .style("left", (d3.event.clientX) + "px")
+               .style("top", (d3.event.clientY) + "px");
       })
       .on("mouseout", function(d) {
           tooltip.transition()

@@ -1,27 +1,39 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8">
         <title>Big Data D3 Lab</title>
         <script src="bower_components/jQuery/dist/jquery.min.js"></script>
         <script src="bower_components/d3/d3.min.js"></script>
         <script type="text/javascript" src="main.js"></script>
-        <link rel=stylesheet type="text/css" href="style.css"/>
+        <link rel="stylesheet" href="stylesheets/styles.css">
     </head>
     <body>
-        <h4 id="hovered">chevrolet chevelle malibu</h4>
+        <h4 id="hovered">Chevrolet Chevelle Malibu</h4>
         <div class="plot">
-            <svg>
-            </svg>
+            <script src="javascripts/scale.fix.js"></script>
         </div>
         <div class="ui">
             <div>
                 <label>X-Axis</label>
                 <select id="sel-x">
+                    <option value="displacement">displacement</option>
                     <option value="mpg">mpg</option>
+                    <option value="cynlinders">cynlinders</option>
+                    <option value="horsepower">horsepower</option>
+                    <option value="weight">weight</option>
+                    <option value="acceleration">acceleration</option>
+                    <option value="model.year">model.year</option>
                 </select>
                 <label>Y-Axis</label>
                 <select id="sel-y">
-                    <option value="">displacement</option>
+                    <option value="mpg">mpg</option>
+                    <option value="displacement">displacement</option>
+                    <option value="horsepower">horsepower</option>
+                    <option value="cynlinders">cynlinders</option>
+                    <option value="acceleration">acceleration</option>
+                    <option value="weight">weight</option>
+                    <option value="model.year">model.year</option>
                 </select>
             </div>
             <div>
@@ -30,6 +42,5 @@
                 <button id="update">Query MPG</button>
             </div>
         </div>
-        <script src="javascripts/scale.fix.js"></script>
     </body>
 </html>
