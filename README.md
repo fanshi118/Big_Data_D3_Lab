@@ -1,4 +1,4 @@
-# D3 lab for Big Data class
+## D3 lab for Big Data class
 
-## Task 2 — JS Challenge
+### Task 2 — JS Challenge
 +[[+!![]]+[+!![]+!![]]+[+!![]+!![]+!![]]]
