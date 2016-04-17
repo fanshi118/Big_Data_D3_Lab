@@ -48,6 +48,21 @@ d3.csv("car.csv", function(error, data) {
        d.acceleration = +d.acceleration;
        d["model.year"] = +d["model.year"];
     });
+    
+    var headers = d3.keys(data[0]);
+    for (var i=0; i<headers.length; i++) {
+        var col = headers[i];
+        if (col!="name" && col!="origin") {
+            var select_x = d3.select("#sel-x")
+                           .append("option")
+                           .attr("value", headers[i])
+                           .text(headers[i]);
+            var select_y = d3.select("#sel-y")
+                           .append("option")
+                           .attr("value", headers[i])
+                           .text(headers[i])
+        }
+    };
      
      // don't want dots overlapping axis, so add in buffer to data domain
   xScale.domain([d3.min(data, xValue)-1, d3.max(data, xValue)+1]);
