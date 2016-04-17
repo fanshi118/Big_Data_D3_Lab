@@ -1,14 +1,14 @@
 var margin = {top: 20, right: 20, bottom: 30, left: 40},
-    width = 960 - margin.left - margin.right,
+    width = 700 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
-// setup x 
+// initialize x 
 var xValue = function(d) { return d.displacement; }, // data -> value
     xScale = d3.scale.linear().range([0, width]), // value -> display
     xMap = function(d) { return xScale(xValue(d)); }, // data -> display
     xAxis = d3.svg.axis().scale(xScale).orient("bottom");
 
-// setup y
+// initialize y
 var yValue = function(d) { return d.mpg;}, // data -> value
     yScale = d3.scale.linear().range([height, 0]), // value -> display
     yMap = function(d) { return yScale(yValue(d));}, // data -> display
@@ -57,14 +57,16 @@ d3.csv("car.csv", function(error, data) {
                            .append("option")
                            .attr("value", headers[i])
                            .text(headers[i]);
-            var select_y = d3.select("#sel-y")
-                           .append("option")
-                           .attr("value", headers[i])
-                           .text(headers[i])
+            if (col!="displacement"){
+                var select_y = d3.select("#sel-y")
+                               .append("option")
+                               .attr("value", headers[i])
+                               .text(headers[i])
+            }
         }
     };
      
-     // don't want dots overlapping axis, so add in buffer to data domain
+  // don't want dots overlapping axis, so add in buffer to data domain
   xScale.domain([d3.min(data, xValue)-1, d3.max(data, xValue)+1]);
   yScale.domain([d3.min(data, yValue)-1, d3.max(data, yValue)+1]);
 
@@ -78,7 +80,7 @@ d3.csv("car.csv", function(error, data) {
       .attr("x", width)
       .attr("y", -6)
       .style("text-anchor", "end")
-      .text("displacement");
+      .text($( "#sel-x option:selected" ).text());
 
   // y-axis
   svg.append("g")
@@ -90,7 +92,7 @@ d3.csv("car.csv", function(error, data) {
       .attr("y", 6)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
-      .text("mpg");
+      .text($( "#sel-y option:selected" ).text());
 
   // draw dots
   svg.selectAll(".dot")
