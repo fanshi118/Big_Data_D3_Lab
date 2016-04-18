@@ -38,7 +38,7 @@ function unhighlight() {
     svg.selectAll("circle").style("stroke", undefined)
 }
 
-d3.csv("car.csv", function(error, data) {
+d3.csv("https://s3.amazonaws.com/yubowenok/car.csv", function(error, data) {
     data.forEach(function(d) {
        d.mpg = +d.mpg;
        d.displacement = +d.displacement;
